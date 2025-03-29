@@ -2,9 +2,84 @@
   --highlight-color: #FF4D00;
 }
 
+/* View Transitions */
+@keyframes fade-in {
+  from { opacity: 0; }
+}
+
+@keyframes fade-out {
+  to { opacity: 0; }
+}
+
+@keyframes scale-up {
+  from { transform: scale(0.95); }
+}
+
+@keyframes scale-down {
+  to { transform: scale(0.95); }
+}
+
+@keyframes slide-from-right {
+  from { transform: translateX(30px); }
+}
+
+@keyframes slide-to-left {
+  to { transform: translateX(-30px); }
+}
+
+/* Smooth page transitions */
+::view-transition-old(root) {
+  animation: 
+    400ms cubic-bezier(0.22, 1, 0.36, 1) both fade-out,
+    400ms cubic-bezier(0.22, 1, 0.36, 1) both slide-to-left;
+}
+
+::view-transition-new(root) {
+  animation: 
+    400ms cubic-bezier(0.22, 1, 0.36, 1) 100ms both fade-in,
+    400ms cubic-bezier(0.22, 1, 0.36, 1) 100ms both slide-from-right;
+}
+
+/* Smooth image transitions */
+::view-transition-old(image) {
+  animation: 500ms cubic-bezier(0.22, 1, 0.36, 1) both fade-out, 
+             500ms cubic-bezier(0.22, 1, 0.36, 1) both scale-down;
+}
+
+::view-transition-new(image) {
+  animation: 500ms cubic-bezier(0.22, 1, 0.36, 1) 90ms both fade-in,
+             500ms cubic-bezier(0.22, 1, 0.36, 1) 90ms both scale-up;
+  mix-blend-mode: normal;
+}
+
+/* Project card specific transitions */
+.project-card {
+  view-transition-name: var(--image-transition-name, none);
+  contain: paint;
+}
+
+.project-card img {
+  view-transition-name: var(--image-transition-name, none);
+  contain: paint;
+}
+
+.project-card-title {
+  view-transition-name: var(--title-transition-name, none);
+}
+
+.project-detail-image {
+  view-transition-name: var(--image-transition-name, none);
+  contain: paint;
+  overflow: hidden;
+}
+
+.project-detail-title {
+  view-transition-name: var(--title-transition-name, none);
+}
+
 /* Gallery specific styles */
 .aspect-square img {
-  transition: transform 0.5s ease;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .aspect-square:hover img {
