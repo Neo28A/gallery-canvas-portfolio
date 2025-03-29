@@ -1,0 +1,91 @@
+:root {
+  --highlight-color: #FF4D00;
+}
+
+/* Gallery specific styles */
+.aspect-square img {
+  transition: transform 0.5s ease;
+}
+
+.aspect-square:hover img {
+  transform: scale(1.05);
+}
+
+.group:hover .absolute {
+  opacity: 1;
+}
+
+/* Make sure images don't get distorted */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Custom scrollbar for the sidebar */
+.w-64::-webkit-scrollbar {
+  width: 6px;
+}
+
+.w-64::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.w-64::-webkit-scrollbar-thumb {
+  background: var(--highlight-color);
+  border-radius: 3px;
+  opacity: 0.7;
+}
+
+.w-64::-webkit-scrollbar-thumb:hover {
+  background: var(--highlight-color);
+  opacity: 1;
+}
+
+/* Ensure sidebar has a max height */
+.w-64 {
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+
+/* Highlight styling */
+.highlight-text {
+  color: var(--highlight-color);
+}
+
+.highlight-border {
+  border-color: var(--highlight-color);
+}
+
+.highlight-bg {
+  background-color: var(--highlight-color);
+}
+
+.highlight-after::after {
+  background-color: var(--highlight-color) !important;
+}
+
+/* Active nav links */
+.nav-link.active {
+  color: var(--highlight-color);
+}
+
+/* Hover effects */
+.hover-highlight:hover {
+  color: var(--highlight-color);
+}
+
+/* Buttons */
+.btn-highlight {
+  background-color: var(--highlight-color);
+  color: white;
+}
+
+.btn-highlight:hover {
+  background-color: #e04500;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--highlight-color);
+  color: white;
+} 
